@@ -1,30 +1,33 @@
-# Curso Patrones de Diseño - TodoCode Academy
-Este repositorio contiene los ejercicios y materiales para el curso **[Patrones de Diseño](https://www.youtube.com/playlist?list=PLQxX2eiEaqbyrYNWCZPBVB32JIGwrAnht)** ofrecido por la **[TodoCode Academy](https://todocodeacademy.com/)**.   
-Todo el material es propiedad intelectual de la mencionada institución. En caso de utilizar para fines educativos, por favor hacer la correspondiente mención. No se permite su uso para fines comerciales sin previa autorización.
+# 🚀 Notifications Library (Java 21)
 
-![Image](https://todocodeacademy.com/wp-content/uploads/2020/12/cropped-LogoConSombras-sinfondo-166x38.png)
+Una librería de notificaciones robusta, extensible, altamente testeada (cobertura >90%) y completamente **agnóstica a frameworks** (sin dependencias de Spring, Quarkus, etc.). Diseñada bajo principios de arquitectura limpia y patrones de diseño SOLID para unificar el envío de alertas mediante múltiples canales.
 
+---
 
-## ¿Cómo usar este repositorio?
+## 🛠️ Características Principales
 
-Cada carpeta en contiene un ejercicio diferente. Se recomienda que sigas el orden de los ejercicios en base a lo que veas en el video explicativo del curso, ya que los mismos están diseñados para aumentar en dificultad progresivamente. 
-Se sugiere intentar resolver los ejercicios por tu cuenta antes de revisar las soluciones que aquí se presentan para seguir ejercitando tu lógica de programación.
+- **Agnóstica a Frameworks:** Configuración 100% mediante código Java puro (sin archivos YAML, properties ni anotaciones de inyección de dependencias).
+- **Múltiples Canales Obligatorios:** Implementación para **Email** (SendGrid), **SMS** (Twilio) y **Push Notifications** (Firebase).
+- **Resiliencia & Tolerancia a Fallos:** Sistema de reintentos automático configurable ante fallas temporales de red o API.
+- **Soporte Asíncrono:** Envíos no bloqueantes utilizando `CompletableFuture`.
+- **Validaciones Estrictas:** Validación previa de formatos (emails válidos, teléfonos, etc.) antes de interactuar con proveedores.
+- **Alta Cobertura de Pruebas:** Cobertura de código superior al 90% con pruebas unitarias que simulan escenarios reales y de error.
 
+---
 
-## Recursos Adicionales
+## 🏗️ Patrones de Diseño & SOLID Aplicados
 
-- Roadmap (ruta de estudio) completo para aprender Java: [Ver aquí](https://todocodeacademy.com/roadmap-para-aprender-java-en-2024/)
+- **Strategy Pattern:** La interfaz común `NotificationProvider` permite que cada canal/proveedor defina de manera independiente cómo procesar la notificación.
+- **Fluent Builder:** Facilita la creación y parametrización de los objetos `Notification` y del cliente `NotificationService`.
+- **Dependency Inversion (SOLID):** Quien use la librería depende únicamente de la abstracción `NotificationService`, logrando un desacoplamiento absoluto de los proveedores reales.
+- **Open/Closed Principle (SOLID):** Es sumamente sencillo agregar un nuevo proveedor o canal (ej. Slack, Discord) simplemente creando una clase que implemente `NotificationProvider`, sin necesidad de modificar el código existente en el núcleo de la librería.
 
-## Contribuciones
+---
 
-Autora del material didáctico y dictado completo de las clases: [Ing. Prof. Luisina de Paula](https://www.linkedin.com/in/luisinaadp/)
+## 📦 Instalación
 
-## Redes Sociales
+Para importar y usar esta librería en un proyecto Maven externo, primero debes compilarla e instalarla en tu repositorio local `.m2`:
 
-Seguinos en nuestras redes para estar al tanto de novedades y más contenido educativo:
-
-- **YouTube:** [TodoCode](https://youtube.com/TodoCode)
-- **Instagram:** [@todo_code](https://instagram.com/todo_code)
-- **Twitch:** [@todocode](https://twitch.tv/todocode)
-- **LinkedIn:** [TodoCode Academy](https://www.linkedin.com/company/todocodeacademy/)
-- **¡Unite al canal de Discord!** [Ingresá acá](https://discord.gg/MqVqXD2MfR)
+```bash
+# Ejecutar en la raíz de la librería
+mvn clean install
