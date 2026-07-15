@@ -38,6 +38,7 @@ public class MainApp {
 
         notificationService.sendAsync(NotificationProvider.NotificationChannel.SMS, smsNotif)
                 .thenAccept(result -> System.out.println("Resultado SMS Async -> Exitoso: " + result.success()));
+        System.out.println("Aqui probadmos el reto tecnico");
     }
 
 }
